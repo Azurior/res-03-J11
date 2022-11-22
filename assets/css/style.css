@@ -166,7 +166,9 @@ body > main > section:last-of-type > main > form {
     color: red;
 }
 
-input.erreur{
+body > main section:first-of-type form > fieldset input[type='email'].erreur, 
+body > main section:first-of-type form > fieldset input[type='text'].erreur, 
+body > main section:first-of-type form > fieldset input[type='password'].erreur{
     border: solid 1px red;
 }
 

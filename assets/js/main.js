@@ -16,48 +16,62 @@ console.log(form1);
 form1.addEventListener("submit", function(e){
     e.preventDefault();
     console.log('fonction');
-    if(username.value !== ""){
+    if(username.value == ""){
         console.log('username');
-        if(email.value !== ""){
+        let inputErrorName = document.createElement("p");
+        let fieldsetName = document.querySelector("form:first-of-type fieldset:nth-of-type(1)");
+        
+        inputErrorName.innerHTML = "Veuillez entrer un Nom d'utilisateur";
+        inputErrorName.classList.add("erreur");
+        username.classList.add("erreur");
+        fieldsetName.appendChild(inputErrorName);
+        
+        if(email.value == ""){
             console.log('email');
-            if(pass.value !== ""){
+            let inputErrorEmail = document.createElement("p");
+            let fieldsetEmail = document.querySelector("form:first-of-type fieldset:nth-of-type(2)");
+            
+            inputErrorEmail.innerHTML = "Veuillez entrer une adresse email";
+            inputErrorEmail.classList.add("erreur");
+            email.classList.add("erreur");
+            fieldsetEmail.appendChild(inputErrorEmail);
+            
+            if(pass.value == ""){
                 console.log('password');
-                if(confPass == pass){
+                let inputErrorPassword = document.createElement("p");
+                let fieldsetPassword = document.querySelector("form:first-of-type fieldset:nth-of-type(3)");
+
+                inputErrorPassword.innerHTML = "Veuillez choisir un mot de passe";
+                inputErrorPassword.classList.add("erreur");
+                pass.classList.add("erreur");
+                fieldsetPassword.appendChild(inputErrorPassword);
+                
+                if(confPass !== pass){
                     console.log('confpassword');
-                    e.target.submit();
+                    let inputErrorConfPassword = document.createElement("p");
+                    let fieldsetConfPassword = document.querySelector("form:first-of-type fieldset:nth-of-type(4)");
+                    
+                    inputErrorConfPassword.innerHTML = "Veuillez faire correspondre le mot de passe";
+                    inputErrorConfPassword.classList.add("erreur");
+                    confPass.classList.add("erreur");
+                    fieldsetConfPassword.appendChild(inputErrorConfPassword);
                     
                 }else {
-                    let inputError = document.createElement("p");
-                    let fieldset = document.querySelector("form:first-of-type fieldset:nth-of-type(4)");
-                    inputError.innerHTML = "Veuillez faire correspondre le mot de passe";
-                    inputError.classList.add("erreur");
-                    fieldset.appendChild(inputError);
+                    e.target.submit();
                 }
                 
             }else {
-                let inputError = document.createElement("p");
-                let fieldset = document.querySelector("form:first-of-type fieldset:nth-of-type(3)");
-                inputError.innerHTML = "Veuillez choisir un mot de passe";
-                inputError.classList.add("erreur");
-                fieldset.appendChild(inputError);
+                e.target.submit();
             }
             
         }else {
-            let inputError = document.createElement("p");
-            let fieldset = document.querySelector("form:first-of-type fieldset:nth-of-type(2)");
-            inputError.innerHTML = "Veuillez rentrer une adresse email";
-            inputError.classList.add("erreur");
-            fieldset.appendChild(inputError);
+            e.target.submit();
         }
         
     }else{
-        let inputError = document.createElement("p");
-        let fieldset = document.querySelector("form:first-of-type fieldset:nth-of-type(1)");
-        let input = document.querySelector("form:first-of-type input:first-of-type");
-        inputError.innerHTML = "Veuillez entrer un Nom d'utilisateur";
-        inputError.classList.add("erreur");
-        input.classList.add("erreur");
-        fieldset.appendChild(inputError);
+        e.target.submit();
     }
 });
+
+
 
