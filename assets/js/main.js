@@ -26,7 +26,11 @@ form1.addEventListener("submit", function(e){
         username.classList.add("erreur");
         fieldsetName.appendChild(inputErrorName);
         
-        if(email.value == ""){
+        
+        
+        let emailAt = email.value.indexOf("@", 0);
+        let emailPoint = email.value.indexOf(".",0);
+        if(emailAt > 0 && emailPoint > 0 ){
             console.log('email');
             let inputErrorEmail = document.createElement("p");
             let fieldsetEmail = document.querySelector("form:first-of-type fieldset:nth-of-type(2)");
